@@ -98,15 +98,14 @@ def testaCurtirPostagemNovamente():
     with pytest.raises(Exception) as error:
         curtir_postagem(2, 1)
     assert str(error.value) == "Usuário já curtiu esta postagem."
-    assert postagens[0]['curtidores'] == [2]
-
-    def test_curtir_postagem_inexistente():
-     resetar()
-     criar_usuario('gleison')
-    with pytest.raises(IndexError) as error:
+    assert postagens[0]['curtidores'] == [2]   
+   
+def test_curtir_postagem_inexistente():
+      resetar()
+      criar_usuario('gleison')
+      with pytest.raises(IndexError) as error:
         curtir_postagem(1, 999) 
-    assert str(error.value) == "Postagem inexistente."
-
+      assert str(error.value) == "Postagem inexistente."
 
 def test_comentar_postagem_valida():
     resetar()
